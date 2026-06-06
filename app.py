@@ -11,97 +11,199 @@ st.set_page_config(
 
 st.markdown("""
 <style>
+    /* Main background */
     .stApp {
-        background: linear-gradient(135deg, #F7FBFC 0%, #EEF7F6 50%, #F9F7FF 100%);
-        color: #243B53;
+        background: linear-gradient(135deg, #F6FAF9 0%, #EEF7F4 50%, #F8F7FF 100%);
+        color: #263648;
     }
 
-    .main-container {
-        background-color: rgba(255, 255, 255, 0.85);
-        padding: 28px;
-        border-radius: 24px;
-        box-shadow: 0px 8px 30px rgba(80, 120, 140, 0.12);
-        margin-bottom: 25px;
+    /* Reduce top spacing */
+    .block-container {
+        padding-top: 2rem;
+        max-width: 1150px;
+    }
+
+    /* Hero section */
+    .hero-card {
+        background: linear-gradient(135deg, #FFFFFF 0%, #F7FFFC 100%);
+        padding: 38px 42px;
+        border-radius: 28px;
+        box-shadow: 0px 12px 35px rgba(91, 135, 128, 0.13);
+        border: 1px solid #E5F0ED;
+        margin-bottom: 28px;
     }
 
     .hero-title {
         font-size: 44px;
-        font-weight: 800;
-        color: #203647;
+        font-weight: 850;
+        color: #24364B;
         line-height: 1.15;
-        margin-bottom: 10px;
+        margin-bottom: 14px;
     }
 
     .hero-subtitle {
-        font-size: 18px;
-        color: #5C6F82;
+        font-size: 17px;
+        color: #607286;
         line-height: 1.7;
+        max-width: 850px;
         margin-bottom: 20px;
     }
 
+    .badge {
+        display: inline-block;
+        background-color: #E7F3EF;
+        color: #3E756B;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-right: 8px;
+        margin-top: 8px;
+    }
+
+    /* Cards */
     .soft-card {
-        background: #FFFFFF;
-        padding: 22px 24px;
-        border-radius: 20px;
-        border: 1px solid #E3EEF2;
-        box-shadow: 0px 6px 20px rgba(80, 120, 140, 0.08);
+        background-color: rgba(255,255,255,0.92);
+        padding: 26px;
+        border-radius: 24px;
+        box-shadow: 0px 8px 25px rgba(91, 135, 128, 0.10);
+        border: 1px solid #E5F0ED;
+        margin-bottom: 24px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        font-weight: 800;
+        color: #24364B;
+        margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+        font-size: 15px;
+        color: #6C7A89;
         margin-bottom: 22px;
     }
 
-    .info-card {
+    .note-card {
         background: #EAF7F4;
         color: #244D4A;
         padding: 18px 22px;
         border-radius: 18px;
-        border-left: 6px solid #6AB7A8;
-        font-size: 16px;
+        border-left: 6px solid #76B7A8;
+        font-size: 15px;
+        line-height: 1.65;
+        margin-bottom: 26px;
+    }
+
+    .result-card-low {
+        background: linear-gradient(135deg, #E7F6EA 0%, #F7FFF8 100%);
+        color: #24553A;
+        padding: 24px;
+        border-radius: 22px;
+        border-left: 7px solid #7FB77E;
+        box-shadow: 0px 8px 24px rgba(127, 183, 126, 0.14);
+        margin-bottom: 18px;
+    }
+
+    .result-card-high {
+        background: linear-gradient(135deg, #FFF0F0 0%, #FFFAFA 100%);
+        color: #7A3030;
+        padding: 24px;
+        border-radius: 22px;
+        border-left: 7px solid #D98C8C;
+        box-shadow: 0px 8px 24px rgba(217, 140, 140, 0.14);
+        margin-bottom: 18px;
+    }
+
+    .risk-label {
+        font-size: 15px;
+        font-weight: 700;
+        opacity: 0.85;
+        margin-bottom: 6px;
+    }
+
+    .risk-main {
+        font-size: 28px;
+        font-weight: 850;
+        margin-bottom: 8px;
+    }
+
+    .risk-desc {
+        font-size: 15px;
         line-height: 1.6;
-        margin-bottom: 24px;
     }
 
     .support-card {
-        background: linear-gradient(135deg, #EEF8FF 0%, #F4F0FF 100%);
+        background: linear-gradient(135deg, #EEF8FF 0%, #F5F1FF 100%);
         color: #263B5E;
-        padding: 22px 24px;
-        border-radius: 20px;
-        border-left: 6px solid #7BA7D7;
-        font-size: 17px;
-        line-height: 1.6;
-        margin-top: 25px;
-        margin-bottom: 20px;
+        padding: 26px;
+        border-radius: 24px;
+        border-left: 7px solid #8CAFE6;
+        box-shadow: 0px 8px 25px rgba(120, 145, 190, 0.12);
+        margin-top: 24px;
+        margin-bottom: 22px;
     }
 
     .support-title {
-        font-size: 22px;
-        font-weight: 800;
-        margin-bottom: 8px;
-        color: #203647;
+        font-size: 23px;
+        font-weight: 850;
+        color: #24364B;
+        margin-bottom: 10px;
     }
 
+    .support-text {
+        font-size: 16px;
+        line-height: 1.7;
+        color: #40546F;
+    }
+
+    .support-highlight {
+        margin-top: 14px;
+        background-color: rgba(255,255,255,0.70);
+        padding: 14px 16px;
+        border-radius: 16px;
+        font-weight: 750;
+        color: #314766;
+    }
+
+    /* Button */
     div.stButton > button {
         width: 100%;
-        background-color: #6AB7A8;
+        background-color: #76B7A8;
         color: white;
-        font-size: 18px;
-        font-weight: 700;
-        border-radius: 14px;
-        padding: 12px;
+        font-size: 17px;
+        font-weight: 800;
+        border-radius: 16px;
+        padding: 13px;
         border: none;
-        transition: 0.3s;
+        box-shadow: 0px 6px 16px rgba(118, 183, 168, 0.25);
+        transition: 0.25s ease;
     }
 
     div.stButton > button:hover {
-        background-color: #4D9C90;
+        background-color: #5CA092;
         color: white;
         border: none;
+        transform: translateY(-1px);
     }
 
-    .stSlider [data-baseweb="slider"] > div {
-        color: #6AB7A8;
+    /* Input fields */
+    div[data-baseweb="select"] > div {
+        border-radius: 14px;
+        background-color: #F8FAFC;
+        border-color: #E6EEF3;
     }
+
+    input {
+        border-radius: 14px !important;
+    }
+
+    /* Hide Streamlit footer/menu */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
 
     h1, h2, h3 {
-        color: #203647;
+        color: #24364B;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -119,105 +221,105 @@ feature_columns = model_package["feature_columns"]
 
 
 st.markdown("""
-<div class="main-container">
+<div class="hero-card">
     <div class="hero-title">🌿 Student Mental Health Risk Screening</div>
     <div class="hero-subtitle">
-        Aplikasi pendukung berbasis machine learning untuk membantu mengestimasi risiko kesehatan mental mahasiswa.       
+        Aplikasi pendukung berbasis machine learning untuk membantu mengestimasi risiko kesehatan mental mahasiswa
     </div>
+    <span class="badge">Academic Factors</span>
+    <span class="badge">Lifestyle Factors</span>
+    <span class="badge">Financial Stress</span>
+    <span class="badge">Machine Learning Screening</span>
 </div>
 """, unsafe_allow_html=True)
 
-st.write(
-    """
-    Aplikasi ini digunakan untuk memprediksi risiko depresi pada mahasiswa
-    berdasarkan faktor akademik, gaya hidup, tekanan finansial, dan riwayat keluarga.
-    """
-)
-
 st.markdown("""
-<div class="info-card">
+<div class="note-card">
     <b>Catatan:</b> Aplikasi ini memberikan estimasi risiko berdasarkan model machine learning dan bukan pengganti diagnosis medis.
     Jika mengalami kondisi serius, disarankan untuk berkonsultasi dengan tenaga profesional.
 </div>
 """, unsafe_allow_html=True)
 
 
-st.subheader("Input Data Mahasiswa")
+st.markdown('<div class="section-title">Input Data Mahasiswa</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-subtitle">Lengkapi data berikut untuk mendapatkan estimasi risiko berdasarkan model.</div>', unsafe_allow_html=True)
 
+col1, col2 = st.columns(2)
 
-gender_input = st.selectbox("Gender", ["Male", "Female"])
+with col1:
+    gender_input = st.selectbox("Gender", ["Male", "Female"])
 
-age = st.number_input(
-    "Age",
-    min_value=15,
-    max_value=60,
-    value=20
-)
+    age = st.number_input(
+        "Age",
+        min_value=15,
+        max_value=60,
+        value=20
+    )
 
-academic_pressure = st.slider(
-    "Academic Pressure",
-    min_value=0,
-    max_value=5,
-    value=3
-)
+    academic_pressure = st.slider(
+        "Academic Pressure",
+        min_value=0,
+        max_value=5,
+        value=3
+    )
 
-ipk_indonesia = st.number_input(
-    "IPK Indonesia",
-    min_value=0.0,
-    max_value=4.0,
-    value=3.0,
-    step=0.01
-)
+    ipk_indonesia = st.number_input(
+        "IPK Indonesia",
+        min_value=0.0,
+        max_value=4.0,
+        value=3.0,
+        step=0.01
+    )
 
-cgpa = ipk_indonesia * 2.5
+    study_satisfaction = st.slider(
+        "Study Satisfaction",
+        min_value=0,
+        max_value=5,
+        value=3
+    )
 
-study_satisfaction = st.slider(
-    "Study Satisfaction",
-    min_value=0,
-    max_value=5,
-    value=3
-)
+with col2:
+    sleep_duration_input = st.selectbox(
+        "Sleep Duration",
+        [
+            "Less than 5 hours",
+            "5-6 hours",
+            "7-8 hours",
+            "More than 8 hours",
+            "Others"
+        ]
+    )
 
-sleep_duration_input = st.selectbox(
-    "Sleep Duration",
-    [
-        "Less than 5 hours",
-        "5-6 hours",
-        "7-8 hours",
-        "More than 8 hours",
-        "Others"
-    ]
-)
+    dietary_habits_input = st.selectbox(
+        "Dietary Habits",
+        ["Healthy", "Moderate", "Unhealthy", "Others"]
+    )
 
-dietary_habits_input = st.selectbox(
-    "Dietary Habits",
-    ["Healthy", "Moderate", "Unhealthy", "Others"]
-)
+    suicidal_thoughts_input = st.selectbox(
+        "Have you ever had suicidal thoughts?",
+        ["No", "Yes"]
+    )
 
-suicidal_thoughts_input = st.selectbox(
-    "Have you ever had suicidal thoughts?",
-    ["No", "Yes"]
-)
+    work_study_hours = st.slider(
+        "Work/Study Hours per Day",
+        min_value=0,
+        max_value=15,
+        value=6
+    )
 
-work_study_hours = st.slider(
-    "Work/Study Hours per Day",
-    min_value=0,
-    max_value=15,
-    value=6
-)
+    financial_stress = st.slider(
+        "Financial Stress",
+        min_value=1,
+        max_value=5,
+        value=3
+    )
 
-financial_stress = st.slider(
-    "Financial Stress",
-    min_value=1,
-    max_value=5,
-    value=3
-)
+    family_history_input = st.selectbox(
+        "Family History of Mental Illness",
+        ["No", "Yes"]
+    )
 
-family_history_input = st.selectbox(
-    "Family History of Mental Illness",
-    ["No", "Yes"]
-)
-
+predict_button = st.button("Analyze Risk")
 
 def preprocess_input():
     gender_map = {
@@ -271,32 +373,54 @@ def preprocess_input():
     return input_data, input_scaled
 
 
-if st.button("Predict"):
+if predict_button:
     raw_input, final_input = preprocess_input()
 
     prediction = model.predict(final_input)[0]
     probability = model.predict_proba(final_input)[0][1]
+    probability_percent = probability * 100
 
-    st.subheader("Input Data Setelah Diproses")
-    st.dataframe(raw_input)
+    st.markdown('<div class="section-title">Prediction Result</div>', unsafe_allow_html=True)
 
-    st.subheader("Prediction Result")
-
-    if prediction == 1:
-        st.error("Hasil Prediksi: Mahasiswa berisiko mengalami depresi.")
+    if probability_percent <= 30:
+        risk_level = "Low Risk"
+        risk_desc = "Berdasarkan data yang dimasukkan, model mengklasifikasikan risiko depresi pada tingkat rendah."
+        card_class = "result-card-low"
+    elif probability_percent <= 70:
+        risk_level = "Moderate Risk"
+        risk_desc = "Berdasarkan data yang dimasukkan, model mengklasifikasikan risiko depresi pada tingkat sedang. Perhatikan faktor tekanan akademik, jam belajar, dan tekanan finansial."
+        card_class = "result-card-low"
     else:
-        st.success("Hasil Prediksi: Mahasiswa tidak terprediksi berisiko mengalami depresi.")
+        risk_level = "High Risk"
+        risk_desc = "Berdasarkan data yang dimasukkan, model mengklasifikasikan risiko depresi pada tingkat tinggi. Dukungan dari lingkungan sekitar dan konsultasi profesional sangat disarankan."
+        card_class = "result-card-high"
+
+    st.markdown(f"""
+    <div class="{card_class}">
+        <div class="risk-label">Estimated Risk Level</div>
+        <div class="risk-main">{risk_level}</div>
+        <div class="risk-desc">{risk_desc}</div>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.metric(
         label="Depression Risk Probability",
-        value=f"{probability * 100:.2f}%"
+        value=f"{probability_percent:.2f}%"
     )
+
+    st.progress(min(int(probability_percent), 100))
+
+    with st.expander("View processed input data"):
+        st.dataframe(raw_input, use_container_width=True)
 
 st.markdown("""
 <div class="support-card">
     <div class="support-title">💬 Butuh teman cerita?</div>
-    Kamu tidak harus menghadapi semuanya sendirian. Jika membutuhkan dukungan, hubungi layanan bantuan resmi yang tersedia.
-    <br><br>
-    <b>Placeholder teks:</b> Butuh teman cerita? Hubungi SEJIWA di 119 ext. 8 (Gratis & Rahasia)
+    <div class="support-text">
+        Kamu tidak harus menghadapi semuanya sendirian. Jika membutuhkan dukungan, hubungi layanan bantuan resmi yang tersedia.
+    </div>
+    <div class="support-highlight">
+        Tambahkan informasi layanan bantuan yang sudah diverifikasi secara resmi di bagian ini.
+    </div>
 </div>
 """, unsafe_allow_html=True)
