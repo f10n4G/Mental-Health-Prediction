@@ -462,7 +462,7 @@ st.markdown("""
         hubungi layanan bantuan resmi yang sudah diverifikasi.
     </div>
     <div class="support-highlight">
-        Tambahkan informasi layanan bantuan resmi yang sudah diverifikasi di bagian ini.
+        SEJIWA di 119 ext. 8 (Gratis & Rahasia)
     </div>
 </div>
 """, unsafe_allow_html=True)
